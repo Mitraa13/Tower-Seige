@@ -1,33 +1,124 @@
-var a;
-var circles=[];
+const Engine = Matter.Engine;
+const World= Matter.World;
+const Bodies = Matter.Bodies;
+const Constraint = Matter.Constraint;
+
+var engine,world;
+var ground,ground1,polygon;
+var box1,box2,box3box4,box5,box5,box6,box7;
+var box8,box9,box10,box11,box12;
+var box13,box14,box15,box16;
+var b1,b2,b3,b4,b5;
+var b6,b7,b8,b9;
+
 function setup() {
-  createCanvas(800,800);
+  createCanvas(1350,650);
   stroke(255)
+
+  engine = Engine.create();
+  world = engine.world;
   
+  ground = new Ground(500+100,550-100,250,20);
+  ground1 = new Ground(1050,200,200,20);
+  base = new Ground(width/2,600,width,30);
+  polygon = new hexagon(150,height/2,50,50);
+
+  //level 1
+  box1 = new box(500+100,520-100,25,40);
+  box2 = new box(475+100,520-100,25,40);
+  box3 = new box(525+100,520-100,25,40);
+  box4 = new box(450+100,520-100,25,40);
+  box5 = new box(550+100,520-100,25,40);
+  box6 = new box(425+100,520-100,25,40);
+  box7 = new box(575+100,520-100,25,40);
+
+  //level 2
+  box8 = new box(500+100,480-100,25,40);
+  box9 = new box(475+100,480-100,25,40);
+  box10 = new box(525+100,480-100,25,40);
+  box11 = new box(450+100,480-100,25,40);
+  box12 = new box(550+100,480-100,25,40);
+
+  //level 3  and 4
+  box13 = new box(475+100,440-100,25,40);
+  box14 = new box(500+100,440-100,25,40);
+  box15 = new box(525+100,440-100,25,40);
+  box16 = new box(500+100,400-100,25,40);
+
+  //lvl 1
+  b1 = new box(1050,170,25,40);
+  b2 = new box(1025,170,25,40);
+  b3 = new box(1075,170,25,40);
+  b4 = new box(1000,170,25,40);
+  b5 = new box(1100,170,25,40);
+
+  //lvl 2 and 3
+  b6 = new box(1050,130,25,40);
+  b7 = new box(1025,130,25,40);
+  b8 = new box(1075,130,25,40);
+
+  b9 = new box(1050,90,25,40);
+
+  chain = new SlingShot(polygon.body,{x:150 , y:height/2});
  
-  a=height;
-  circles.push(width/2)
 }
 
 function draw() {
-  //camera.zoom=camera.zoom+1
-  background(0);  
+
+  background("white");  
+
+  Engine.update(engine);  
   
-  
-  a=a-1;
-  
- 
-  
-  for (i=0;i<circles.length;i++)
-{
-	circle(circles[i], height/2,20)
-}
-if(camera.position.x%width===0)
-{
-	circles.push(camera.position.x+width/2)
-}
- // camera(0, 0, 20 + sin(frameCount * 0.01) * 10, 0, 0, 0, 0, 1, 0);
+  stroke("black");
+  fill(135,206,234);
+  box1.display();
+  box2.display();
+  box3.display();
+  box4.display();
+  box5.display();
+  box6.display();
+  box7.display();
+  fill(254,191,202);
+  box8.display();
+  box9.display();
+  box10.display();
+  box11.display();
+  box12.display();
+  fill(62,223,207);
+  box13.display();
+  box14.display();
+  box15.display();
+  fill(128,128,128);
+  box16.display();
+
+  fill(135,206,234);
+  b1.display();
+  b2.display();
+  b3.display();
+  b4.display();
+  b5.display();
+  fill(62,223,207);
+  b6.display();
+  b7.display();
+  b8.display();
+  fill(254,191,202);
+  b9.display();
+
+  ground.display();
+  ground1.display();
+  polygon.display();
+  chain.display();
+  base.display();
+
  drawSprites();
+}
+
+function mouseDragged(){
+    Matter.Body.setPosition(polygon.body,{x:mouseX , y:mouseY});
+}
+
+function mouseReleased(){
+    chain.fly();
 }
 
 function keyPressed ()
