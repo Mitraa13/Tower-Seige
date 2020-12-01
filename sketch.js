@@ -59,13 +59,13 @@ function setup() {
 
   b9 = new box(1050,90,25,40);
 
-  chain = new SlingShot(polygon.body,{x:150 , y:height/2});
+  chain = new SlingShot(polygon.body,{x:150 , y:200});
  
 }
 
 function draw() {
 
-  background("white");  
+  background("lightblue");  
 
   Engine.update(engine);  
   
@@ -110,7 +110,12 @@ function draw() {
   chain.display();
   base.display();
 
- drawSprites();
+  fill("black");
+  textSize(20);
+  text("Drag the Hexagonal Stone and Release it, to launch it towards the blocks",100,30);
+  text("Press Space to get a second chance",100,60);
+
+  drawSprites();
 }
 
 function mouseDragged(){
@@ -123,7 +128,7 @@ function mouseReleased(){
 
 function keyPressed ()
 {
-  if(keyCode === RIGHT_ARROW)
-  {
+  if(keyCode === 32){
+    chain.attach(polygon.body);
   }
 } 
