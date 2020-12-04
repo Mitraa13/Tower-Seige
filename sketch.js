@@ -11,6 +11,8 @@ var box13,box14,box15,box16;
 var b1,b2,b3,b4,b5;
 var b6,b7,b8,b9;
 
+var Score = 0;
+
 function setup() {
   createCanvas(1350,650);
   stroke(255)
@@ -114,6 +116,34 @@ function draw() {
   textSize(20);
   text("Drag the Hexagonal Stone and Release it, to launch it towards the blocks",100,30);
   text("Press Space to get a second chance",100,60);
+  textSize(20);
+  text("Score:"+Score,1250,50);
+
+  box1.score();
+  box2.score();
+  box3.score();
+  box4.score();
+  box5.score();
+  box6.score();
+  box7.score();
+  box8.score();
+  box9.score();
+  box10.score();
+  box11.score();
+  box12.score();
+  box13.score();
+  box14.score();
+  box15.score();
+  box16.score();
+  b1.score();
+  b2.score();
+  b3.score();
+  b4.score();
+  b5.score();
+  b6.score();
+  b7.score();
+  b8.score();
+  b9.score();
 
   drawSprites();
 }

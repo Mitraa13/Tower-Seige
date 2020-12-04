@@ -25,9 +25,13 @@ class box{
           World.remove(world,this.body);
           push();
           this.Visibility = this.Visibility-5;
-          tint(255,this.Visibility);
-          rect(this.body,this.body.position.x,this.body.position.y);
           pop();
         }
      }
+
+     score(){
+      if(this.Visiblity===0){
+        Score++;
+      }
+    }
 }
