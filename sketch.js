@@ -5,7 +5,7 @@ const Constraint = Matter.Constraint;
 
 var engine,world;
 var ground,ground1,polygon;
-var backgroundImg
+var backgroundImg,date;
 var box1,box2,box3box4,box5,box5,box6,box7;
 var box8,box9,box10,box11,box12;
 var box13,box14,box15,box16;
@@ -119,7 +119,8 @@ function draw() {
   chain.display();
   base.display();
 
-  fill("black");
+  fill("white");
+  stroke("black");
   textSize(20);
   text("Drag the Hexagonal Stone and Release it, to launch it towards the blocks",100,30);
   text("Press Space to get a second chance",100,60);
@@ -183,7 +184,7 @@ async function getTime(){
   var time = dt.slice(11,13);
   console.log(time);
 
-  if((time>=6) && (time>=15)){
+  if((time>=0600) && (time<=1900)){
       bg = "bg.jpg";
   } else{
       bg = "bg2.jpg";
